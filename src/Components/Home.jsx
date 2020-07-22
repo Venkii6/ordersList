@@ -15,7 +15,7 @@ const Home = () => {
     const handleCloseList = () => setShowList(false)
 
     return (
-        <div class="wrapper">
+        <div className="wrapper">
             <Button xs="12" className="mr-3" onClick={handleShowMakeOrder}>
                 Make Order
             </Button>
@@ -39,8 +39,6 @@ const Home = () => {
 
         </div>
     );
-
-
 
 }
 

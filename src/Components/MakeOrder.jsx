@@ -53,8 +53,8 @@ class MakeOrder extends React.Component {
     }
 
     renderOptions = (options) => {
-        return options.map((data) => {
-            return <option> {data}</option>;
+        return options.map((data,index) => {
+            return <option key={index}> {data}</option>;
         });
     };
 
