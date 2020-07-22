@@ -1,10 +1,9 @@
-import React from 'react';
-import { Col, Button, Modal } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import MakeOrder from './MakeOrder'
 import OrdersList from './OrdersList'
 import '../Home.css'
 
-import { useEffect, useState } from 'react';
 
 const Home = () => {
     const [showMakeOrder, setShowMakeOrder] = useState(false);
@@ -28,7 +27,7 @@ const Home = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>Make Order</Modal.Title>
                 </Modal.Header>
-                <MakeOrder />
+                <MakeOrder handleCloseMakeOrder={handleCloseMakeOrder}/>
             </Modal>
 
             <Modal show={showList} onHide={handleCloseList}>

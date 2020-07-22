@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Button, Col, Container, Row } from 'react-bootstrap';
 import validator from 'validator';
+import {connect} from 'react-redux';
+import {makeOrder} from '../Redux/Actions'
 
 const pizzaOptions = ["Chicken Pizza", "Veg Pizza", "Non veg Pizza", "Vegan Pizza", "Lamb Pizza", "Becaon Pizza"]
 
@@ -13,15 +15,19 @@ class MakeOrder extends React.Component {
             email: "",
             phoneNumber: "",
             pizzaType: "",
-
         };
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = () => {
+        if (this.enteredDataIsValid()) {
+            this.props.makeOrder(this.state);
+            this.props.handleCloseMakeOrder();
+        }
+    }
 
+    enteredDataIsValid = () =>{
+        let isValid = false;
         var pattern = new RegExp(/^[0-9\b]+$/);
-        console.log("pizza type", this.state.pizzaType);
-
         if (!this.state.firstName.length) {
             alert("Please enter firstName");
         } else if (!this.state.lastName.length) {
@@ -36,11 +42,11 @@ class MakeOrder extends React.Component {
             alert("Please enter only numbers");
         } else if (this.state.phoneNumber.length != 10) {
             alert("Please enter valid phone number");
+        }else{
+            isValid = true
         }
-
+        return isValid;
     }
-
-
 
     renderOptions = (options) => {
         return options.map((data) => {
@@ -68,7 +74,7 @@ class MakeOrder extends React.Component {
                                 <Form.Control type="email" placeholder="Enter email" onChange={e => this.setState({ email: e.target.value })} />
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone else.
-                    </Form.Text>
+                                </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="phoneNumber">
                                 <Form.Label>Phone Number</Form.Label>
@@ -76,21 +82,33 @@ class MakeOrder extends React.Component {
                             </Form.Group>
                             <Form.Group controlId="form.PizzaSelection">
                                 <Form.Label>Select pizza</Form.Label>
-                                <Form.Control as="select" defaultValue="Chicken Pizza" onChange={e => this.setState({ pizzaType: e.target.value })}>
+                                <Form.Control as="select"  value={pizzaOptions[1]} onChange={e => this.setState({ pizzaType: e.target.value })}>
                                     {this.renderOptions(pizzaOptions)}
                                 </Form.Control>
                             </Form.Group>
                             <Button variant="primary" onClick={this.handleSubmit}>
                                 Submit
-                </Button>
+                            </Button>
                         </Form>
                     </Col>
                 </Row>
             </Container>
-
         );
 
     }
 }
 
-export default MakeOrder;
+const mapStateToProps = (state) => {
+    return {
+        orderList:state.orderList
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        makeOrder: (orderDetails) => dispatch(makeOrder(orderDetails))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(MakeOrder);
+
