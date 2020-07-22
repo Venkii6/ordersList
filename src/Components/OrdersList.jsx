@@ -8,7 +8,7 @@ const OrdersList = ({orderList}) => {
     const renderData = () => {
         return orderList.map((data,index) => {
             return (
-                <Card>
+                <Card key={index}>
                     <Accordion.Toggle as={Card.Header} eventKey={index.toString()}>
                         {data.firstName} {data.lastName}
                     </Accordion.Toggle>

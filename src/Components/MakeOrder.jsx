@@ -63,26 +63,26 @@ class MakeOrder extends React.Component {
             <div>
                 <Col className="my-2">
                     <Form>
-                        <Form.Group contrlId="firstName">
+                        <Form.Group>
                             <Form.Label>First Name</Form.Label>
                             <Form.Control placeholder="Enter First name" onChange={this.handleOnchange} name="firstName" />
                         </Form.Group>
-                        <Form.Group controlId="lastName">
+                        <Form.Group>
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control placeholder="Enter Last name"  onChange={this.handleOnchange} name="lastName"/>
                         </Form.Group>
-                        <Form.Group controlId="email">
+                        <Form.Group>
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email"  onChange={this.handleOnchange} name="email" />
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                                 </Form.Text>
                         </Form.Group>
-                        <Form.Group controlId="phoneNumber">
+                        <Form.Group>
                             <Form.Label>Phone Number</Form.Label>
                             <Form.Control placeholder="Enter phone number" onChange={this.handleOnchange} name="phoneNumber" />
                         </Form.Group>
-                        <Form.Group controlId="form.PizzaSelection">
+                        <Form.Group>
                             <Form.Label>Select pizza</Form.Label>
                             <Form.Control as="select" defaultValue={pizzaOptions[0]} onChange={this.handleOnchange} name="pizzaType" >
                                 {this.renderOptions(pizzaOptions)}
