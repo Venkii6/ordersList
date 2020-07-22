@@ -1,0 +1,13 @@
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  
+  background-image: url('./Assets/pizza.jpg');
+  background-size: cover;
+  background-position: center; 
+
+}
