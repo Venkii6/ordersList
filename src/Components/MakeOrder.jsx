@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, Button, Col, Container, Row } from 'react-bootstrap';
 import validator from 'validator';
-import {connect} from 'react-redux';
-import {makeOrder} from '../Redux/Actions'
+import { connect } from 'react-redux';
+import { makeOrder } from '../Redux/Actions'
 
 const pizzaOptions = ["Chicken Pizza", "Veg Pizza", "Non veg Pizza", "Vegan Pizza", "Lamb Pizza", "Becaon Pizza"]
 
@@ -25,7 +25,7 @@ class MakeOrder extends React.Component {
         }
     }
 
-    enteredDataIsValid = () =>{
+    enteredDataIsValid = () => {
         let isValid = false;
         var pattern = new RegExp(/^[0-9\b]+$/);
         if (!this.state.firstName.length) {
@@ -42,7 +42,7 @@ class MakeOrder extends React.Component {
             alert("Please enter only numbers");
         } else if (this.state.phoneNumber.length != 10) {
             alert("Please enter valid phone number");
-        }else{
+        } else {
             isValid = true
         }
         return isValid;
@@ -54,45 +54,42 @@ class MakeOrder extends React.Component {
         });
     };
 
-
     render() {
         return (
-            <Container>
-                <Row >
-                    <Col>
-                        <Form>
-                            <Form.Group contrlId="firstName">
-                                <Form.Label>First Name</Form.Label>
-                                <Form.Control placeholder="Enter First name" onChange={e => this.setState({ firstName: e.target.value })} className="firstName" />
-                            </Form.Group>
-                            <Form.Group controlId="lastName">
-                                <Form.Label>Last Name</Form.Label>
-                                <Form.Control placeholder="Enter Last name" onChange={e => this.setState({ lastName: e.target.value })} />
-                            </Form.Group>
-                            <Form.Group controlId="email">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" onChange={e => this.setState({ email: e.target.value })} />
-                                <Form.Text className="text-muted">
-                                    We'll never share your email with anyone else.
+            <div>
+                <Col className="my-2">
+                    <Form>
+                        <Form.Group contrlId="firstName">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control placeholder="Enter First name" onChange={e => this.setState({ firstName: e.target.value })} className="firstName" />
+                        </Form.Group>
+                        <Form.Group controlId="lastName">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control placeholder="Enter Last name" onChange={e => this.setState({ lastName: e.target.value })} />
+                        </Form.Group>
+                        <Form.Group controlId="email">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" onChange={e => this.setState({ email: e.target.value })} />
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
                                 </Form.Text>
-                            </Form.Group>
-                            <Form.Group controlId="phoneNumber">
-                                <Form.Label>Phone Number</Form.Label>
-                                <Form.Control placeholder="Enter phone number" onChange={this.handleChange} onChange={e => this.setState({ phoneNumber: e.target.value })} />
-                            </Form.Group>
-                            <Form.Group controlId="form.PizzaSelection">
-                                <Form.Label>Select pizza</Form.Label>
-                                <Form.Control as="select"  value={pizzaOptions[1]} onChange={e => this.setState({ pizzaType: e.target.value })}>
-                                    {this.renderOptions(pizzaOptions)}
-                                </Form.Control>
-                            </Form.Group>
-                            <Button variant="primary" onClick={this.handleSubmit}>
-                                Submit
+                        </Form.Group>
+                        <Form.Group controlId="phoneNumber">
+                            <Form.Label>Phone Number</Form.Label>
+                            <Form.Control placeholder="Enter phone number" onChange={this.handleChange} onChange={e => this.setState({ phoneNumber: e.target.value })} />
+                        </Form.Group>
+                        <Form.Group controlId="form.PizzaSelection">
+                            <Form.Label>Select pizza</Form.Label>
+                            <Form.Control as="select" value={pizzaOptions[1]} onChange={e => this.setState({ pizzaType: e.target.value })}>
+                                {this.renderOptions(pizzaOptions)}
+                            </Form.Control>
+                        </Form.Group>
+                        <Button variant="primary" onClick={this.handleSubmit}>
+                            Submit
                             </Button>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
+                    </Form>
+                </Col>
+            </div>
         );
 
     }
@@ -100,7 +97,7 @@ class MakeOrder extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        orderList:state.orderList
+        orderList: state.orderList
     }
 }
 
@@ -110,5 +107,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(MakeOrder);
+export default connect(mapStateToProps, mapDispatchToProps)(MakeOrder);
 
