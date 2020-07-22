@@ -14,7 +14,7 @@ class MakeOrder extends React.Component {
             lastName: "",
             email: "",
             phoneNumber: "",
-            pizzaType: "",
+            pizzaType: pizzaOptions[0],
         };
     }
 
@@ -23,6 +23,10 @@ class MakeOrder extends React.Component {
             this.props.makeOrder(this.state);
             this.props.handleCloseMakeOrder();
         }
+    }
+
+    handleOnchange = (e) => {
+        this.setState({[e.target.name]:e.target.value});
     }
 
     enteredDataIsValid = () => {
@@ -61,26 +65,26 @@ class MakeOrder extends React.Component {
                     <Form>
                         <Form.Group contrlId="firstName">
                             <Form.Label>First Name</Form.Label>
-                            <Form.Control placeholder="Enter First name" onChange={e => this.setState({ firstName: e.target.value })} className="firstName" />
+                            <Form.Control placeholder="Enter First name" onChange={this.handleOnchange} name="firstName" />
                         </Form.Group>
                         <Form.Group controlId="lastName">
                             <Form.Label>Last Name</Form.Label>
-                            <Form.Control placeholder="Enter Last name" onChange={e => this.setState({ lastName: e.target.value })} />
+                            <Form.Control placeholder="Enter Last name"  onChange={this.handleOnchange} name="lastName"/>
                         </Form.Group>
                         <Form.Group controlId="email">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" onChange={e => this.setState({ email: e.target.value })} />
+                            <Form.Control type="email" placeholder="Enter email"  onChange={this.handleOnchange} name="email" />
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                                 </Form.Text>
                         </Form.Group>
                         <Form.Group controlId="phoneNumber">
                             <Form.Label>Phone Number</Form.Label>
-                            <Form.Control placeholder="Enter phone number" onChange={this.handleChange} onChange={e => this.setState({ phoneNumber: e.target.value })} />
+                            <Form.Control placeholder="Enter phone number" onChange={this.handleOnchange} name="phoneNumber" />
                         </Form.Group>
                         <Form.Group controlId="form.PizzaSelection">
                             <Form.Label>Select pizza</Form.Label>
-                            <Form.Control as="select" value={pizzaOptions[1]} onChange={e => this.setState({ pizzaType: e.target.value })}>
+                            <Form.Control as="select" defaultValue={pizzaOptions[0]} onChange={this.handleOnchange} name="pizzaType" >
                                 {this.renderOptions(pizzaOptions)}
                             </Form.Control>
                         </Form.Group>
