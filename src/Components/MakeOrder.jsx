@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Col, Container, Row } from 'react-bootstrap';
+import { Form, Button, Col } from 'react-bootstrap';
 import validator from 'validator';
 import { connect } from 'react-redux';
 import { makeOrder } from '../Redux/Actions'
@@ -26,7 +26,7 @@ class MakeOrder extends React.Component {
     }
 
     handleOnchange = (e) => {
-        this.setState({[e.target.name]:e.target.value});
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     enteredDataIsValid = () => {
@@ -44,7 +44,7 @@ class MakeOrder extends React.Component {
             alert("Please enter phone number");
         } else if (!pattern.test(this.state.phoneNumber)) {
             alert("Please enter only numbers");
-        } else if (this.state.phoneNumber.length != 10) {
+        } else if (this.state.phoneNumber.length !== 10) {
             alert("Please enter valid phone number");
         } else {
             isValid = true
@@ -53,7 +53,7 @@ class MakeOrder extends React.Component {
     }
 
     renderOptions = (options) => {
-        return options.map((data,index) => {
+        return options.map((data, index) => {
             return <option key={index}> {data}</option>;
         });
     };
@@ -65,31 +65,31 @@ class MakeOrder extends React.Component {
                     <Form>
                         <Form.Group >
                             <Form.Label className="text-primary font-weight-bold" >First Name</Form.Label>
-                            <Form.Control placeholder="Enter First name" onChange={this.handleOnchange} 
-                            name="firstName" className="border-primary" />
+                            <Form.Control placeholder="Enter First name" onChange={this.handleOnchange}
+                                name="firstName" className="border-primary" />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className="text-primary font-weight-bold">Last Name</Form.Label>
-                            <Form.Control placeholder="Enter Last name"  onChange={this.handleOnchange} 
-                            name="lastName" className="border-primary"/>
+                            <Form.Control placeholder="Enter Last name" onChange={this.handleOnchange}
+                                name="lastName" className="border-primary" />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className="text-primary font-weight-bold">Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email"  onChange={this.handleOnchange} 
-                            name="email" className="border-primary"/>
+                            <Form.Control type="email" placeholder="Enter email" onChange={this.handleOnchange}
+                                name="email" className="border-primary" />
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                                 </Form.Text>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className="text-primary font-weight-bold">Phone Number</Form.Label>
-                            <Form.Control placeholder="Enter phone number" onChange={this.handleOnchange} 
-                            name="phoneNumber" className="border-primary" />
+                            <Form.Control placeholder="Enter phone number" onChange={this.handleOnchange}
+                                name="phoneNumber" className="border-primary" />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className="text-primary font-weight-bold">Select pizza</Form.Label>
-                            <Form.Control as="select" defaultValue={pizzaOptions[0]} onChange={this.handleOnchange} 
-                            name="pizzaType"  className="border-primary">
+                            <Form.Control as="select" defaultValue={pizzaOptions[0]} onChange={this.handleOnchange}
+                                name="pizzaType" className="border-primary">
                                 {this.renderOptions(pizzaOptions)}
                             </Form.Control>
                         </Form.Group>
@@ -100,7 +100,6 @@ class MakeOrder extends React.Component {
                 </Col>
             </div>
         );
-
     }
 }
 

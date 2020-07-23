@@ -1,12 +1,10 @@
 import React from 'react';
-import { Accordion, Card, Container, Row } from 'react-bootstrap';
-import {connect} from 'react-redux';
-import {makeOrder} from '../Redux/Actions'
+import { Accordion, Card, Container } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-const OrdersList = ({orderList}) => {
-
+const OrdersList = ({ orderList }) => {
     const renderData = () => {
-        return orderList.map((data,index) => {
+        return orderList.map((data, index) => {
             return (
                 <Card key={index}>
                     <Accordion.Toggle as={Card.Header} eventKey={index.toString()} className="text-primary font-weight-bold">
@@ -22,24 +20,22 @@ const OrdersList = ({orderList}) => {
                 </Card>
             );
         });
-
     }
 
     return (
         <Container>
             <Container className="mb-4">
-              {orderList.length ? (<Accordion>
+                {orderList.length ? (<Accordion>
                     {renderData()}
                 </Accordion>) : (<p>No Orders</p>)}
             </Container>
         </Container>
-
     );
 }
 
 const mapStateToProps = (state) => {
     return {
-        orderList:state.orderList
+        orderList: state.orderList
     }
 }
 
