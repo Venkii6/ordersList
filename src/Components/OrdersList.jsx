@@ -9,7 +9,7 @@ const OrdersList = ({orderList}) => {
         return orderList.map((data,index) => {
             return (
                 <Card key={index}>
-                    <Accordion.Toggle as={Card.Header} eventKey={index.toString()}>
+                    <Accordion.Toggle as={Card.Header} eventKey={index.toString()} className="text-primary font-weight-bold">
                         {data.firstName} {data.lastName}
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey={index.toString()}>

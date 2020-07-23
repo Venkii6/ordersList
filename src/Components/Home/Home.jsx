@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import MakeOrder from './MakeOrder'
-import OrdersList from './OrdersList'
-import '../Home.css'
-
+import MakeOrder from '../MakeOrder'
+import OrdersList from '../OrdersList'
+import './Home.css'
 
 const Home = () => {
     const [showMakeOrder, setShowMakeOrder] = useState(false);
@@ -25,14 +24,14 @@ const Home = () => {
 
             <Modal show={showMakeOrder} onHide={handleCloseMakeOrder}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Make Order</Modal.Title>
+                    <Modal.Title className="text-primary">Make Order</Modal.Title>
                 </Modal.Header>
                 <MakeOrder handleCloseMakeOrder={handleCloseMakeOrder}/>
             </Modal>
 
             <Modal show={showList} onHide={handleCloseList}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Orders List</Modal.Title>
+                    <Modal.Title className="text-primary">Orders List</Modal.Title>
                 </Modal.Header>
                 <OrdersList />
             </Modal>

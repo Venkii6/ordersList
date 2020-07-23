@@ -63,28 +63,33 @@ class MakeOrder extends React.Component {
             <div>
                 <Col className="my-2">
                     <Form>
-                        <Form.Group>
-                            <Form.Label>First Name</Form.Label>
-                            <Form.Control placeholder="Enter First name" onChange={this.handleOnchange} name="firstName" />
+                        <Form.Group >
+                            <Form.Label className="text-primary font-weight-bold" >First Name</Form.Label>
+                            <Form.Control placeholder="Enter First name" onChange={this.handleOnchange} 
+                            name="firstName" className="border-primary" />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Last Name</Form.Label>
-                            <Form.Control placeholder="Enter Last name"  onChange={this.handleOnchange} name="lastName"/>
+                            <Form.Label className="text-primary font-weight-bold">Last Name</Form.Label>
+                            <Form.Control placeholder="Enter Last name"  onChange={this.handleOnchange} 
+                            name="lastName" className="border-primary"/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email"  onChange={this.handleOnchange} name="email" />
+                            <Form.Label className="text-primary font-weight-bold">Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email"  onChange={this.handleOnchange} 
+                            name="email" className="border-primary"/>
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                                 </Form.Text>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Phone Number</Form.Label>
-                            <Form.Control placeholder="Enter phone number" onChange={this.handleOnchange} name="phoneNumber" />
+                            <Form.Label className="text-primary font-weight-bold">Phone Number</Form.Label>
+                            <Form.Control placeholder="Enter phone number" onChange={this.handleOnchange} 
+                            name="phoneNumber" className="border-primary" />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Select pizza</Form.Label>
-                            <Form.Control as="select" defaultValue={pizzaOptions[0]} onChange={this.handleOnchange} name="pizzaType" >
+                            <Form.Label className="text-primary font-weight-bold">Select pizza</Form.Label>
+                            <Form.Control as="select" defaultValue={pizzaOptions[0]} onChange={this.handleOnchange} 
+                            name="pizzaType"  className="border-primary">
                                 {this.renderOptions(pizzaOptions)}
                             </Form.Control>
                         </Form.Group>
